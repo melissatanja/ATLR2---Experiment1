@@ -20,7 +20,12 @@ function draw(){
 	
 	fill(0, 102, 255);
 	noStroke();
-	ellipse(w/4, h/4, sizeL, sizeL);
-	ellipse(w/4 + sizeL, h/4, sizeL, sizeL);
+	ellipse(w/4, h/4 - sizeL/2, sizeL, sizeL);
+	ellipse(w/4 + 20, h/4 - sizeL/2, sizeL, sizeL);
+
+	fill(0, 153, 255);
+	noStroke();
+	ellipse(w/4, h/4, sizeS, sizeS);
+	ellipse(w/4 + 20, h/4, sizeS, sizeS);
 
 }
