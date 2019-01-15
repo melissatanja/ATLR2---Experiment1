@@ -101,87 +101,70 @@ function draw()
 // function sendData() {
  
 
-//   // Send Data to the server to draw it in all other canvases
-//   dataServer.publish(
-//     {
-//       channel: channelName,
-//       message: 
-//       {
-//         user_red:
-//           {
-//             x_angle: , 
-//             y_angle: ,
-//             red_bird: , 
-//             blue_bird: , 
-//             green_bird: , 
-//             yellow_bird: , 
-//             trade: 
-//           }
-//         user_blue:
-//           {
-//             x_angle: , 
-//             y_angle: ,
-//             red_bird: , 
-//             blue_bird: , 
-//             green_bird: , 
-//             yellow_bird: , 
-//             trade: 
-//           }
-//         user_green:
-//           {
-//             x_angle: , 
-//             y_angle: ,
-//             red_bird: , 
-//             blue_bird: , 
-//             green_bird: , 
-//             yellow_bird: , 
-//             trade: 
-//           }
-//         user_yellow:
-//           {
-//             x_angle: , 
-//             y_angle: ,
-//             red_bird: , 
-//             blue_bird: , 
-//             green_bird: , 
-//             yellow_bird: , 
-//             trade: 
-//           }
-//       }
-//     });
-
-// };
+  // Send Data to the server to draw it in all other canvases
+dataServer.publish({
+    channel: channelName,
+    message: 
+  {
+    user: "red",
+    x_angle: , 
+    y_angle: ,
+    red_bird: , 
+    blue_bird: , 
+    green_bird: , 
+    yellow_bird: , 
+    trade: 
+  }
+});
 
 function tradeRequest(){
 
-  if(inMessage.message.user_red){
+  if(inMessage.message.user = "red"){
 
-    if(trade_red === true){
+    // if(trade_red === true){
 
-      window.alert("You can't trade with yourself");
+    //   window.alert("You can't trade with yourself");
 
-    }
+    // }
 
     //trading with blue user
     if(trade_blue === true){
 
-      if(inMessage.message.user_red.blue_bird > 0){
+      if(inMessage.message.blue_bird > 0){
 
         //trading blue bird
-        inMessage.message.user_red.blue_bird -= 1;
-        inMessage.message.user_blue.blue_bird += 1;
+        inMessage.message.blue_bird -= 1;
 
-      }else if(inMessage.message.user_red.green_bird > 0){
+        if(inMessage.message.user = "blue"){
+
+          //receiving blue bird
+          inMessage.message.blue_bird += 1;
+
+        }
+
+      }else if(inMessage.message.green_bird > 0){
 
         //trading green bird
         inMessage.message.user_red.green_bird -= 1;
-        inMessage.message.user_blue.green_bird += 1;
+
+        if(inMessage.message.user = "blue"){
+
+          //receiving green bird
+          inMessage.message.green_bird += 1;
+
+        }
 
       }else if(inMessage.message.user_red.yellow_bird > 0){
 
         //trading yellow bird
         inMessage.message.user_red.yellow_bird -= 1;
-        inMessage.message.user_blue.yellow_bird += 1;
+
+        if(inMessage.message.user = "blue"){
+
+          //receiving yellow bird
+          inMessage.message.yellow_bird += 1;
+
+        }
 
       }else{
 
