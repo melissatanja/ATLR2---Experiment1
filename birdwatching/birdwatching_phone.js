@@ -80,15 +80,13 @@ dataServer.publish({
     channel: channelName,
     message: 
   {
-    user_red:
-      x_angle: xPos, 
-      y_angle: yPos,
-      red_bird: , 
-      blue_bird: , 
-      green_bird: , 
-      yellow_bird: , 
-      trade: 
-    user_blue:
-
+    user: "red",
+    x_angle: xPos, 
+    y_angle: yPos,
+    red_bird: , 
+    blue_bird: , 
+    green_bird: , 
+    yellow_bird: , 
+    trade:
   }
 });
