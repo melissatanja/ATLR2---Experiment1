@@ -86,7 +86,6 @@ dataServer.publish({
     red_bird: , 
     blue_bird: , 
     green_bird: , 
-    yellow_bird: , 
-    trade:
+    yellow_bird: 
   }
 });

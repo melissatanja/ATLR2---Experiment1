@@ -39,12 +39,6 @@ function tradeRequest(){
 
   if(inMessage.message.user = "red"){
 
-    // if(trade_red === true){
-
-    //   window.alert("You can't trade with yourself");
-
-    // }
-
     //trading with blue user
     if(trade_blue === true){
 
@@ -99,7 +93,7 @@ function tradeRequest(){
 
     }
 
-    //trasing with yellow user
+    //trading with yellow user
     if(trade_yellow === true){
 
 
@@ -119,5 +113,6 @@ function readIncoming(inMessage) //when new data comes in it triggers this funct
 
     var moveX = map(xPos, 0, width/2);
     var moveY = map(yPos, 0, height/2);
+
   }
 }
