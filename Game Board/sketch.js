@@ -39,6 +39,9 @@ var cell = (cs-200)/8;
 var x = cs-100-cell/2;
 var y = cs-100-cell/2;
 
+///////////-1 or 1 generator
+var num = Math.floor(Math.random()) + 1; // this will get a number between 1 and 99;
+num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 
 function setup() {
 
@@ -51,10 +54,10 @@ function setup() {
 
 //setup birds
   for (let i = 0; i < 4; i++) {
-    // birdsBlue[i] = new BirdieB(0,cs);
+    birdsBlue[i] = new BirdieB(random(cs),random(cs));
     birdsRed[i] = new BirdieR(random(cs),random(cs));
-    // birdsYellow[i] = new BirdieY(0,cs);
-    // birdsGreen[i] = new BirdieG(0,cs);
+    birdsYellow[i] = new BirdieY(random(cs),random(cs));
+    birdsGreen[i] = new BirdieG(random(cs),random(cs));
 
   }
 
@@ -65,10 +68,7 @@ function setup() {
 
   function draw() {
 
-///////////-1 or 1 generator
-// var num = Math.floor(Math.random()) + 1; // this will get a number between 1 and 99;
-// num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-// console.log("number: "+num);
+
 
   rectMode(CORNER);
   //red section
@@ -143,18 +143,18 @@ y = constrain(y,100+r,width-100-r);
 for(let i=0;i<4;i++){
     // stroke(map(BirdieB[i].x,0,width,0,255),0,0);
 
-    // fill("blue");
-    // birdsBlue[i].move();
-    // birdsBlue[i].show();
+    fill("blue");
+    birdsBlue[i].move();
+    birdsBlue[i].show();
     fill("red");
     birdsRed[i].move();
     birdsRed[i].show();
-    // fill("green");
-    // birdsGreen[i].move();
-    // birdsGreen[i].show();
-    // fill("yellow");
-    // birdsYellow[i].move();
-    // birdsYellow[i].show();
+    fill("green");
+    birdsGreen[i].move();
+    birdsGreen[i].show();
+    fill("yellow");
+    birdsYellow[i].move();
+    birdsYellow[i].show();
 
 
 }
@@ -169,22 +169,44 @@ for(let i=0;i<4;i++){
 
 
 
-// class BirdieB{
-//   constructor(x,y) {
-//     this.x = x;
-//     this.y = y;
-//     this.xs = 3;
-//     this.ys = 3;
-//   }
-//   move(){
-//     this.x += this.xs;
-//     this.y += this.ys;
-//     // if(this.x)
-//   }
-//   show(){
-//     ellipse(this.x,this.y, 10,10);
-//   }
-// }
+class BirdieB{
+  constructor(x,y) {
+    num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+
+    this.x = x;
+    this.y = y;
+    this.xs = 3*num;
+        num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+
+    this.ys = 3*num;
+  }
+  move(){
+    this.x += this.xs;
+    this.y += this.ys;
+    if(this.x >= cs){
+      this.x = cs;
+      this.xs*= -1;
+    }
+    if(this.y >= cs){
+      this.y = cs;
+      this.ys*= -1;
+    }
+
+    if(this.x<=0){
+      this.x = 0;
+      this.xs *= -1; 
+    }
+    if(this.y<=0){
+      this.y = 0;
+      this.ys *= -1;
+    }
+
+
+  }
+  show(){
+    ellipse(this.x,this.y, 10,10);
+  }
+}
 
 
 
@@ -192,10 +214,14 @@ for(let i=0;i<4;i++){
 class BirdieR{
 
   constructor(x,y) {
+    num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+
     this.x = x;
     this.y = y;
-    this.xs = 3;
-    this.ys = 3;
+    this.xs = 3*num;
+        num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+
+    this.ys = 3*num;
   }
 
   move(){
@@ -209,6 +235,18 @@ class BirdieR{
       this.y = cs;
       this.ys*= -1;
     }
+
+    if(this.x<=0){
+      this.x = 0;
+      this.xs *= -1; 
+    }
+    if(this.y<=0){
+      this.y = 0;
+      this.ys *= -1;
+    }
+
+
+
 
   }
 
@@ -224,51 +262,93 @@ class BirdieR{
 
 
 
-// class BirdieG{
+class BirdieG{
 
-//   constructor(x,y) {
-//     this.x = x;
-//     this.y = y;
-//     this.xs = 3;
-//     this.ys = 3;
-//   }
+  constructor(x,y) {
+    num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 
-//   move(){
-//     this.x += this.xs;
-//     this.y += this.ys;
+    this.x = x;
+    this.y = y;
+    this.xs = 3*num;
+        num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 
-//     // if(this.x)
-//   }
-//   show(){
-//     ellipse(this.x,this.y, 10,10);
-//   }
-// }
+    this.ys = 3*num;
+  }
+
+  move(){
+    this.x += this.xs;
+    this.y += this.ys;
+    if(this.x >= cs){
+      this.x = cs;
+      this.xs*= -1;
+    }
+    if(this.y >= cs){
+      this.y = cs;
+      this.ys*= -1;
+    }
+
+    if(this.x<=0){
+      this.x = 0;
+      this.xs *= -1; 
+    }
+    if(this.y<=0){
+      this.y = 0;
+      this.ys *= -1;
+    }
+
+
+  }
+  show(){
+    ellipse(this.x,this.y, 10,10);
+  }
+}
 
 
 
 
 
 
-// class BirdieY{
+class BirdieY{
 
-//   constructor(x,y) {
-//     this.x = x;
-//     this.y = y;
-//     this.xs = 3;
-//     this.ys = 3;
+  constructor(x,y) {
+    num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 
-//   }
+    this.x = x;
+    this.y = y;
+    this.xs = 3*num;
+        num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 
-//   move(){
-//     this.x += this.xs;
-//     this.y += this.ys;
+    this.ys = 3*num;
 
-//     // if(this.x)
-//   }
-//   show(){
-//     ellipse(this.x,this.y, 10,10);
-//   }
-// }
+  }
+
+  move(){
+    this.x += this.xs;
+    this.y += this.ys;
+    if(this.x >= cs){
+      this.x = cs;
+      this.xs*= -1;
+    }
+    if(this.y >= cs){
+      this.y = cs;
+      this.ys*= -1;
+    }
+
+    if(this.x<=0){
+      this.x = 0;
+      this.xs *= -1; 
+    }
+    if(this.y<=0){
+      this.y = 0;
+      this.ys *= -1;
+    }
+
+
+  }
+  show(){
+    ellipse(this.x,this.y, 10,10);
+  }
+}
 
 
 
